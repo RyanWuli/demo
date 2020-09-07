@@ -10,9 +10,11 @@ public class ThreadLocalDemo {
 
     static class Bank {
         ThreadLocal<Integer> threadLocal = ThreadLocal.withInitial(() -> 0);
+
         public Integer get() {
             return threadLocal.get();
         }
+
         public void set() {
             threadLocal.set(threadLocal.get() + 10);
         }

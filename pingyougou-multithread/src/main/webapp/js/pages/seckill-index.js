@@ -1,11 +1,11 @@
 //列表数据加载
 $(function () {
     // 鼠标经过增加边框
-            $(".seckill-item").hover(function () {
-                $(this).css("border-color","#b1191a");
-            },function(){
-                $(this).css("border-color","transparent");
-            })
+    $(".seckill-item").hover(function () {
+        $(this).css("border-color", "#b1191a");
+    }, function () {
+        $(this).css("border-color", "transparent");
+    })
 //    $.ajax ({
 //        type:"GET",
 //        url:"../data/list-data.json",
@@ -24,7 +24,7 @@ $(function () {
 //                 + "<a class='sui-btn btn-block btn-buy' href='seckill-item.html' target='_blank'>立即抢购</a>"
 //                 + "</li >"
 //             );
-            
+
 //         })
 //        }
 //    })
@@ -46,8 +46,8 @@ $(document).ready(function ($) {
     $back_to_top.on('click', function (event) {
         event.preventDefault();
         $('body,html').animate({
-            scrollTop: 0,
-        }, scroll_top_duration
+                scrollTop: 0,
+            }, scroll_top_duration
         );
     });
 

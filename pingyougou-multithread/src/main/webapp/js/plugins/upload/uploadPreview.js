@@ -1,10 +1,11 @@
-
-var uploadPreview = function(setting) {
+var uploadPreview = function (setting) {
 
     var _self = this;
 
-    _self.IsNull = function(value) {
-        if (typeof (value) == "function") { return false; }
+    _self.IsNull = function (value) {
+        if (typeof (value) == "function") {
+            return false;
+        }
         if (value == undefined || value == null || value == "" || value.length == 0) {
             return true;
         }
@@ -19,7 +20,8 @@ var uploadPreview = function(setting) {
         Height: 100,
         ImgType: ["gif", "jpeg", "jpg", "bmp", "png"],
         ErrMsg: "文件错误,图片类型必须是(gif,jpeg,jpg,bmp,png)中的一种",
-        callback: function() { }
+        callback: function () {
+        }
     };
 
     _self.Setting = {
@@ -33,7 +35,7 @@ var uploadPreview = function(setting) {
         callback: _self.IsNull(setting.callback) ? _self.DefautlSetting.callback : setting.callback
     };
 
-    _self.getObjectURL = function(file) {
+    _self.getObjectURL = function (file) {
         var url = null;
         if (window.createObjectURL != undefined) {
             url = window.createObjectURL(file);
@@ -45,36 +47,36 @@ var uploadPreview = function(setting) {
         return url;
     }
 
-    _self.Bind = function() {
+    _self.Bind = function () {
 
-			document.getElementById(_self.Setting.UpBtn).onchange = function() {
-				if (this.value) {
-					if (!RegExp("\.(" + _self.Setting.ImgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
-						alert(_self.Setting.ErrMsg);
-						this.value = "";
-						return false;
-					}
-					if (navigator.userAgent.indexOf("MSIE") > -1) {
-						try {
-							document.getElementById(_self.Setting.ImgShow).src = _self.getObjectURL(this.files[0]);
-						} catch (e) {
-							var div = document.getElementById(_self.Setting.DivShow);
-							this.select();
-							top.parent.document.body.focus();
-							var src = document.selection.createRange().text;
-							document.selection.empty();
-							document.getElementById(_self.Setting.ImgShow).style.display = "none";
-							div.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-							div.style.width = _self.Setting.Width + "px";
-							div.style.height = _self.Setting.Height + "px";
-							div.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = src;
-						}
-					} else {
-						document.getElementById(_self.Setting.ImgShow).src = _self.getObjectURL(this.files[0]);
-					}
-					_self.Setting.callback();
-				}
-	
+        document.getElementById(_self.Setting.UpBtn).onchange = function () {
+            if (this.value) {
+                if (!RegExp("\.(" + _self.Setting.ImgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
+                    alert(_self.Setting.ErrMsg);
+                    this.value = "";
+                    return false;
+                }
+                if (navigator.userAgent.indexOf("MSIE") > -1) {
+                    try {
+                        document.getElementById(_self.Setting.ImgShow).src = _self.getObjectURL(this.files[0]);
+                    } catch (e) {
+                        var div = document.getElementById(_self.Setting.DivShow);
+                        this.select();
+                        top.parent.document.body.focus();
+                        var src = document.selection.createRange().text;
+                        document.selection.empty();
+                        document.getElementById(_self.Setting.ImgShow).style.display = "none";
+                        div.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                        div.style.width = _self.Setting.Width + "px";
+                        div.style.height = _self.Setting.Height + "px";
+                        div.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = src;
+                    }
+                } else {
+                    document.getElementById(_self.Setting.ImgShow).src = _self.getObjectURL(this.files[0]);
+                }
+                _self.Setting.callback();
+            }
+
         }
     }
 
@@ -82,12 +84,12 @@ var uploadPreview = function(setting) {
 }
 
 
-
-function file_click(){
-	var WARP = document.getElementById('two');
-	var WARP_LI = WARP.getElementsByClassName('new-photo');
-	for(var i=0; i<WARP_LI.length;i++){
-		new uploadPreview({ UpBtn: "up_img_WU_FILE_"+i, ImgShow: "imgShow_WU_FILE_"+i});		
-	}
+function file_click() {
+    var WARP = document.getElementById('two');
+    var WARP_LI = WARP.getElementsByClassName('new-photo');
+    for (var i = 0; i < WARP_LI.length; i++) {
+        new uploadPreview({UpBtn: "up_img_WU_FILE_" + i, ImgShow: "imgShow_WU_FILE_" + i});
+    }
 }
+
 window.onload = file_click;

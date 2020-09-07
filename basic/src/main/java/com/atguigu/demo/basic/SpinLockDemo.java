@@ -16,7 +16,7 @@ public class SpinLockDemo {
     public void myLock() {
         Thread thread = Thread.currentThread();
         System.out.println(Thread.currentThread().getName() + "\t come in ♪(＾∀＾●)ﾉ");
-        while (!atomicReference.compareAndSet(null, thread)){
+        while (!atomicReference.compareAndSet(null, thread)) {
             System.out.println("该我上场表演了？？？？？");
         }
     }

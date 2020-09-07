@@ -22,7 +22,7 @@ $(function () {
     // });
     var lileg = $(".sui-nav").children().length;
     if (lileg < 8) {
-        $("#li-1").css({"display":"none"});
+        $("#li-1").css({"display": "none"});
     }
 })
 
@@ -59,9 +59,14 @@ $(function () {
     $(window).scroll(function () {
         var scroH = $(this).scrollTop(); //获取滚动条滑动距离
         if (scroH >= navH) {
-            $("#headnav-fixed").css({ "position": "fixed", "top": 0,"width":"inherit" ,"border-bottom":"1px solid #B1191A"});
+            $("#headnav-fixed").css({
+                "position": "fixed",
+                "top": 0,
+                "width": "inherit",
+                "border-bottom": "1px solid #B1191A"
+            });
         } else if (scroH < navH) {
-            $("#headnav-fixed").css({ "position": "static","border-bottom":0});
+            $("#headnav-fixed").css({"position": "static", "border-bottom": 0});
         }
     })
 })

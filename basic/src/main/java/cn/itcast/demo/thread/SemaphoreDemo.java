@@ -37,7 +37,7 @@ public class SemaphoreDemo implements Runnable {
         int workerNum = 8; // 八个工人
         Semaphore semaphore = new Semaphore(3); // 3台机器
         for (int i = 0; i < workerNum; i++) {
-            new Thread(new SemaphoreDemo(i,semaphore)).start();
+            new Thread(new SemaphoreDemo(i, semaphore)).start();
         }
     }
 }

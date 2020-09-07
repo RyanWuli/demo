@@ -56,6 +56,7 @@ public class SleepAndWake {
     // lock 加锁的方式
     private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
+
     public void odd() { // 输出奇数的方法
         while (i < 10) {
             try {

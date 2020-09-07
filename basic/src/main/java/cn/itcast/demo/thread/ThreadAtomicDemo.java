@@ -7,11 +7,11 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  * @Author: Ryan
  * @Date: 2020/7/14 16:24
  * @Version: 1.0
- * @Description: 用原子类解决多线程数据不正常(a-没有原子操作|b-原子操作|c-解决ABA原子操作)
+ * @Description: 用原子类解决多线程数据不正常(a - 没有原子操作 | b - 原子操作 | c - 解决ABA原子操作)
  */
 public class ThreadAtomicDemo {
 
-//    static int n; // a
+    //    static int n; // a
 //    static AtomicInteger atomicInteger; // b
     static AtomicStampedReference<Integer> atomicStampedReference; // c
 
@@ -31,7 +31,7 @@ public class ThreadAtomicDemo {
                     do {
                         stamp = atomicStampedReference.getStamp();
                         reference = atomicStampedReference.getReference();
-                    } while (!atomicStampedReference.compareAndSet(reference, reference + 1, stamp, stamp +1));
+                    } while (!atomicStampedReference.compareAndSet(reference, reference + 1, stamp, stamp + 1));
                 }
             });
             Thread thread2 = new Thread(() -> {
@@ -44,7 +44,7 @@ public class ThreadAtomicDemo {
                     do {
                         stamp = atomicStampedReference.getStamp();
                         reference = atomicStampedReference.getReference();
-                    } while (!atomicStampedReference.compareAndSet(reference, reference + 1, stamp, stamp +1));
+                    } while (!atomicStampedReference.compareAndSet(reference, reference + 1, stamp, stamp + 1));
                 }
             });
             thread.start();

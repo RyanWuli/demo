@@ -1,0 +1,12 @@
+server:
+  port: 8998
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      host: 112.74.18.182
+      port: 27017
+      username: rrkj
+      password: chuniao2020
+      database: rrkj
+
