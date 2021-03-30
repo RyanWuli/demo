@@ -1,1 +1,8 @@
-{ "properties": [ ] }
+{
+  "properties": [
+    {
+      "name": "socketio.host",
+      "type": "java.lang.String",
+      "description": "Description for socketio.host."
+  }
+] }

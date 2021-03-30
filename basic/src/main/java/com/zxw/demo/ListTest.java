@@ -14,19 +14,31 @@ import java.util.stream.Collectors;
  */
 public class ListTest {
 
+    /**
+     * 去重
+     * @param args
+     */
+//    public static void main(String[] args) {
+//        Person person = new Person("张三", 22);
+//        Person p = new Person("李四", 24);
+//        Person per = new Person("李四", 24);
+//
+//        List<Person> list = new ArrayList<>();
+//        list.add(person);
+//        list.add(p);
+//        list.add(per);
+//
+//        System.out.println(">>>>> 去重之前的 list:" + list);
+//
+//        list = list.stream().distinct().collect(Collectors.toList());
+//        System.out.println(">>>>> 去重之后的 list：" + list);
+//    }
+
     public static void main(String[] args) {
-        Person person = new Person("张三", 22);
-        Person p = new Person("李四", 24);
-        Person per = new Person("李四", 24);
-
-        List<Person> list = new ArrayList<>();
-        list.add(person);
-        list.add(p);
-        list.add(per);
-
-        System.out.println(">>>>> 去重之前的 list:" + list);
-
-        list = list.stream().distinct().collect(Collectors.toList());
-        System.out.println(">>>>> 去重之后的 list：" + list);
+        List<String> list = new ArrayList<>();
+        list.add("null");
+        System.out.println(list);
     }
+
+
 }

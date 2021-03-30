@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>NETTY SOCKET.IO DEMO</title>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+<!--    <script src="../js/socket.io.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.1/socket.io.min.js"></script>
+
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>-->
+    <style>
+        body {
+            padding: 20px;
+        }
+        #console {
+            height: 450px;
+            overflow: auto;
+        }
+        .username-msg {
+            color: orange;
+        }
+        .connect-msg {
+            color: green;
+        }
+        .disconnect-msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="console" class="well"></div>
+</body>
+<script type="text/javascript">
+    let socket;
+    connect();
+
+    function connect() {
+
+        var loginUserNum = '88';
+        var opts = {
+            query: 'userId=' + loginUserNum
+        };
+        // socket = io.connect('http://localhost:9099?userId=Ryan', {
+        //     transports : ['websocket']
+        // });
+        socket = io.connect('http://localhost:9099?userId=88', {transports : ['websocket'],
+            // forceNew: true,
+            reconnectionAttempts:1,
+            reconnectionDelay:1000,
+            timeout:5000});
+
+        socket.on('connection', function (data) {
+            console.log("连接成功");
+            console.log(data);
+            serverOutput('<span class="connect-msg">连接成功</span>');
+        });
+        socket.on('push_event', function (data) {
+            output('<span class="username-msg">' + data + ' </span>');
+            console.log(data);
+        });
+
+        socket.on('disconnect', function () {
+            serverOutput('<span class="disconnect-msg">' + '已下线! </span>');
+        });
+    }
+
+    function output(message) {
+        var element = $("<div>" + " " + message + "</div>");
+        $('#console').prepend(element);
+    }
+
+    function serverOutput(message) {
+        var element = $("<div>" + message + "</div>");
+        $('#console').prepend(element);
+    }
+</script>
+</html>

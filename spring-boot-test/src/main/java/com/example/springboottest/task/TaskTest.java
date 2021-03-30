@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
  * @Version: 1.0
  * @Description:
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 @Slf4j
 public class TaskTest {
 
