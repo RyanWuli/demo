@@ -132,6 +132,7 @@ class MongodbApplicationTests {
     }
 
     /* ************************************** 只有评论没有回复******************************* */
+
     /**
      * 查询某个课程的评论
      */
@@ -178,7 +179,7 @@ class MongodbApplicationTests {
             comment.put("headImg", "评论者的头像链接3");
             comment.put("status", 0); // 0-代表正常 -1：代表删除 -2-代表举报被禁
             Query query = new Query(Criteria.where("_id").is("00000000000002"));
-            Update update = new Update().addToSet("commentList",comment);
+            Update update = new Update().addToSet("commentList", comment);
             UpdateResult result = mongoTemplate.updateFirst(query, update, "courseComment");
             log.info(result.toString());
             if (result.getModifiedCount() > 0) {

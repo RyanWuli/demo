@@ -42,6 +42,7 @@ public class HutoolTest {
 
     /**
      * 模板内容替换工具测试
+     *
      * @param args
      */
 //    public static void main(String[] args) {
@@ -58,8 +59,6 @@ public class HutoolTest {
 //        }
 //        System.out.println(template);
 //    }
-
-
     public static void main(String[] args) {
         String today = DateUtil.today();
         DateTime dateTime = DateUtil.parseDate(today);

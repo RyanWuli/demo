@@ -55,7 +55,7 @@ public class CryptoTest {
             PrivateKey priKey = getPrivateKeyFromPKCS8(new ByteArrayInputStream(privateKey.getBytes()));
             Cipher cipher = Cipher.getInstance("RSA");
             cipher.init(Cipher.DECRYPT_MODE, priKey);
-            byte[] encryptedData = (charset==null||charset.isEmpty()) ? Base64.decodeBase64(content.getBytes())
+            byte[] encryptedData = (charset == null || charset.isEmpty()) ? Base64.decodeBase64(content.getBytes())
                     : Base64.decodeBase64(content.getBytes(charset));
             int inputLen = encryptedData.length;
             ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -75,7 +75,7 @@ public class CryptoTest {
             }
             byte[] decryptedData = out.toByteArray();
             out.close();
-            return (charset==null||charset.isEmpty()) ? new String(decryptedData) : new String(decryptedData, charset);
+            return (charset == null || charset.isEmpty()) ? new String(decryptedData) : new String(decryptedData, charset);
         } catch (Exception e) {
             throw new Exception("EncodeContent = " + content + ",charset = " + charset, e);
         }
@@ -84,7 +84,7 @@ public class CryptoTest {
     public static PrivateKey getPrivateKeyFromPKCS8(InputStream is) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         StringWriter writer = new StringWriter();
-        Reader in=new InputStreamReader(is);
+        Reader in = new InputStreamReader(is);
         char[] buffer = new char[4096];
         int amount;
         while ((amount = in.read(buffer)) >= 0) {

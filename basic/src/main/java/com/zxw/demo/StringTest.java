@@ -42,12 +42,13 @@ public class StringTest {
 
     /**
      * 找到字符串某个字符的最后一位的下标值
+     *
      * @param args
      */
     public static void main(String[] args) {
         String url = "/aaa/bbb/ccc";
         int i = url.lastIndexOf("/");
-        String newUrl = url.substring(0,i);
+        String newUrl = url.substring(0, i);
         System.out.println(newUrl);
     }
 

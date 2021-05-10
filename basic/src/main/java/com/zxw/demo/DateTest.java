@@ -21,7 +21,7 @@ public class DateTest {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         System.out.println(calendar);
-        String[] week = {"周日","周一","周二","周三","周四","周五","周六"};
+        String[] week = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
         System.out.println("指定时间是：" + week[calendar.get(Calendar.DAY_OF_WEEK) - 1]);
     }
 }
