@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<h1>FastDFS DEMO</h1>
+<div id="container">
+    <input type="file" id="file" name="file" />
+    <button type="button" onclick="upload()">上传</button>
+</div>
+</body>
+<script>
+
+    function upload() {
+        let formData = new FormData();
+        formData.append("file", $("#file")[0].files[0]);
+        $.ajax({
+            url: "http://localhost:10086/file/upload",
+            type: "post",
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (resData) {
+                $("#container").append("<div> 上传成功：" + resData + "</div>");
+            }
+        })
+    }
+
+</script>
+</html>

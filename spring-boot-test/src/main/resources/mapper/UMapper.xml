@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboottest.mapper.UMapper">
+    <resultMap id="UserBooks" type="com.example.springboottest.entity.U">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="uName" jdbcType="VARCHAR" property="uName" />
+        <collection property="books" ofType="com.example.springboottest.entity.Book">
+            <id property="id" column="bid"/>
+            <result property="bkName" column="bkName"/>
+            <result property="uId" column="uId"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="UserBookPage" type="com.example.springboottest.entity.U">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="uName" jdbcType="VARCHAR" property="uName" />
+        <collection property="books" ofType="com.example.springboottest.entity.Book" select="selectBooks" column="id"></collection>
+    </resultMap>
+
+<!--    <sql id="Base_Column_List">-->
+<!--    id, serial-->
+<!--    </sql>-->
+
+    <select id="selectUserBooks" parameterType="java.lang.Integer" resultMap="UserBooks">
+        select u.id, u.u_name uName, b.id bid, b.bk_name bkName, b.u_id uId from u u,book b where u.id = b.u_id and u.id = #{uId}
+    </select>
+
+    <select id="selectUsersBooks" resultMap="UserBooks">
+        select u.id, u.u_name uName, b.id bid, b.bk_name bkName, b.u_id uId from u u,book b where u.id = b.u_id
+    </select>
+
+<!--    分页主查询-->
+    <select id="selectUPage" resultMap="UserBookPage" parameterType="java.lang.Integer">
+        select u.id, u.u_name uName from u u
+    </select>
+
+<!--    分页子查询-->
+    <select id="selectBooks" resultType="com.example.springboottest.entity.Book" parameterType="java.lang.Integer">
+        select b.id id, b.bk_name bkName, b.u_id uId from book b where b.u_id = #{id}
+    </select>
+
+</mapper>

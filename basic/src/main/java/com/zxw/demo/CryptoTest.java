@@ -39,6 +39,11 @@ public class CryptoTest {
             "xrfOnhkgbTaLsvvMBs8sXX+IoKesQqIx4Wmtcoa5wrn+R5RBxlly21y4NeXEq/AkBJAZWsY\n" +
             "+yOwp5kWy9KFZ2LmWDBwfJWEbK01Jk6t58dOQw61jGnAW3YaaqsRXoCYFL11cF2R3PGkjxfRPDDcHp/";
 
+    /**
+     * 解密
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         byte[] decode = java.util.Base64.getDecoder().decode(data);
         Cipher cipher = Cipher.getInstance(type);

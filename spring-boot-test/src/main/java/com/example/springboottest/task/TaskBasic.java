@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
  * @Description: 测试定时任务
  */
 @Slf4j
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class TaskBasic {
 
     @Scheduled(cron = "0/5 * * * * ?")
