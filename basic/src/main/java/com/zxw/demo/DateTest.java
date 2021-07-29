@@ -4,7 +4,6 @@ import javax.sound.midi.Soundbank;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -66,13 +65,11 @@ public class DateTest {
 //        LocalDate parse = LocalDate.parse(sdf.format(d));
 //        System.out.println("--------------------> parse:" + parse);
 //    }
+
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date d = sdf.parse("2021-03-05");
         int i = LocalDate.now().compareTo(LocalDate.parse("2021-03-05"));
         System.out.println("--------------------> i:" + i);
     }
-
-
-
 }

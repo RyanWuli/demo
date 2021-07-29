@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://47.107.139.152:3306/auth?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useAffectedRows=true&useSSL=false
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+    platform: mysql
+#    schema: classpath:/schema.sql
+    #第一次启动做建表用，之后注释掉
+#    initialization-mode: always
+  jpa:
+    database: mysql
+    open-in-view: false
+
+  thymeleaf:
+    mode: HTML
+#mybatis:
+#  config-location: classpath:/mybatis-config.xml
+
+# token 配置
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: n(HWP[%Z)TA&O1CdUvrm^.4!XEw_7jRF
+  # 过期时间设置
+  expireTime: 1800000

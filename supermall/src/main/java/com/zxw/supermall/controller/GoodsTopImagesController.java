@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author Ryan
@@ -28,7 +28,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/supermall/goods-top-images")
-public class GoodsTopImagesController  {
+public class GoodsTopImagesController {
 
     @Autowired
     IGoodsTopImagesService iGoodsTopImagesService;

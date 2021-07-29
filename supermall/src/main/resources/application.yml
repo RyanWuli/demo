@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-#    username: root
-#    password: 123456
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://47.107.139.152:3306/supermall?serverTimezone=CTT
+    #    username: root
+    #    password: 123456
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://47.107.139.152:3306/supermall?serverTimezone=CTT
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -47,15 +47,15 @@ spring:
         # 设置监控页面的登陆密码
         login-password: admin
   #    type: com.zaxxer.hikari.HikariDataSource
-#    hikari:
-#      minimum-idle: 5 #最小空闲连接数量
-#      maximum-pool-size: 15 #连连接池最大连接数，默认是10
-#      auto-commit: true #此属性控制从池返回的连接的默认自动提交行为,默认值：true
-#      idle-timeout: 300000 #空闲连接存活最大时间，默认600000（10分钟）
-#      pool-name: MyHikariCP #连接池母子  DatebookHikariCP
-#      max-lifetime: 1800000 #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-#      connection-timeout: 15000 #数据库连接超时时间,默认30秒，即30000
-#      connection-test-query: SELECT 1
+  #    hikari:
+  #      minimum-idle: 5 #最小空闲连接数量
+  #      maximum-pool-size: 15 #连连接池最大连接数，默认是10
+  #      auto-commit: true #此属性控制从池返回的连接的默认自动提交行为,默认值：true
+  #      idle-timeout: 300000 #空闲连接存活最大时间，默认600000（10分钟）
+  #      pool-name: MyHikariCP #连接池母子  DatebookHikariCP
+  #      max-lifetime: 1800000 #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+  #      connection-timeout: 15000 #数据库连接超时时间,默认30秒，即30000
+  #      connection-test-query: SELECT 1
   redis:
     host: 47.107.139.152
     port: 6379
