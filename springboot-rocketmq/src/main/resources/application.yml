@@ -1,0 +1,18 @@
+
+
+
+
+
+
+rocketmq:
+# 配置模式参数
+#  nameserver: 47.107.139.152:9876
+  topic: test-topic
+  producer-group: test-group
+# template 模式的参数
+  producer:
+    group: test-group
+    send-message-timeout: 3000
+  name-server: 47.107.139.152:9876
+
+
