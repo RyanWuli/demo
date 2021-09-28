@@ -33,4 +33,16 @@ public class ListTest {
         System.out.println("----- dates:" + dates);
         System.out.println("----- dateStrList:" + dateStrList);
     }
+
+    /**
+     * 测试空数组不会执行循环
+     */
+    @Test
+    public void listTest() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+            System.out.println(i);
+        }
+    }
 }
