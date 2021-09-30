@@ -12,9 +12,19 @@ import java.math.BigDecimal;
 @Slf4j
 public class BigDecimalTest {
 
+    /**
+     * 新建数字指定小数位数
+     */
     @Test
     public void test() {
         BigDecimal bigDecimal = BigDecimal.valueOf(1000, 2);
         log.info("----- bigDecimal:{} -----", bigDecimal);
+    }
+
+    @Test
+    public void pointMoveTest() {
+        BigDecimal bigDecimal = BigDecimal.valueOf(23.98);
+        BigDecimal res = bigDecimal.movePointRight(2);
+        System.out.println(res);
     }
 }
