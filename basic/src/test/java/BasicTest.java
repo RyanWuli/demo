@@ -63,4 +63,19 @@ public class BasicTest {
         int n = i / 2;
         System.out.println(n);
     }
+
+    @Test
+    public void countAdd() {
+        int count = 0;
+        System.out.println(count++);
+        System.out.println(count);
+        System.out.println(++count);
+        System.out.println(count);
+    }
+
+    @Test
+    public void testString() {
+        System.out.println(null == null);
+        System.out.println("".equals(null));
+    }
 }
