@@ -41,4 +41,26 @@ public class BasicTest {
         float fl = (f - f2) / 100;
         System.out.println(fl);
     }
+
+    /**
+     * 微信字符串截取为时间
+     */
+    @Test
+    public void strTest() {
+        String str = "20210605154609";
+        String year = str.substring(0, 4);
+        String month = str.substring(4, 6);
+        String day = str.substring(6, 8);
+        String hour = str.substring(8, 10);
+        String minute = str.substring(10, 12);
+        String second = str.substring(12);
+        System.out.println(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
+    }
+
+    @Test
+    public void intTest() {
+        int i = 3;
+        int n = i / 2;
+        System.out.println(n);
+    }
 }

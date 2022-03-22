@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 
 import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayFundTransUniTransferModel;
 import com.alipay.api.domain.Participant;
 import com.alipay.api.request.AlipayFundTransUniTransferRequest;
@@ -15,8 +16,10 @@ import com.alipay.api.response.AlipayUserInfoShareResponse;
 import com.example.pay.config.AlipayProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.Map;
 import java.util.UUID;
 
 @SpringBootTest
@@ -27,6 +30,9 @@ class PayApplicationTests {
 
     @Resource
     public AlipayProperties alipayProperties;
+
+    @Resource
+    RestTemplate restTemplate;
 
     @Test
     void contextLoads() {
@@ -76,9 +82,6 @@ class PayApplicationTests {
     @Test
     void aliPayTransferTest() throws AlipayApiException {
 
-        System.out.println("-------------> alipayConfig" + alipayClient);
-        System.out.println("-------------> alipayProperties" + alipayProperties);
-
         AlipayFundTransUniTransferModel model = new AlipayFundTransUniTransferModel();
         model.setOutBizNo(UUID.randomUUID().toString());
         model.setBizScene("DIRECT_TRANSFER");
@@ -103,29 +106,42 @@ class PayApplicationTests {
 
         AlipayFundTransUniTransferResponse response = alipayClient.execute(request);
         System.out.println("---------------> result:" + JSONObject.toJSONString(response));
+
+        Map<String, String> map = JSONObject.parseObject(JSONObject.toJSONString(response), Map.class);
+        System.out.println(map);
     }
 
     @Test
-    void aliPayGetUserInfo() {
+    void aliPayGetUserInfo() throws AlipayApiException {
 
         System.out.println(alipayClient);
 
         /*
         ************************** 获取 access_token ****************************
          */
-        try {
-            AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
-            System.out.println("request:" + request);
-            request.setGrantType("authorization_code");
-            request.setCode("4b203fe6c11548bcabd8da5bb087a83b");
-            AlipaySystemOauthTokenResponse response = alipayClient.execute(request);
-            System.out.println(JSONObject.toJSONString(request));
-
-            if(response.isSuccess()){
-                System.out.println("调用成功");
-            } else {
-                System.out.println("调用失败");
-            }
+//        try {
+//            AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
+//            System.out.println("request:" + request);
+//            request.setGrantType("authorization_code");
+//            request.setCode("4b203fe6c11548bcabd8da5bb087a83b");
+//            AlipaySystemOauthTokenResponse response = alipayClient.execute(request);
+//            System.out.println(JSONObject.toJSONString(request));
+//
+//            if(response.isSuccess()){
+//                System.out.println("调用成功");
+//            } else {
+//                System.out.println("调用失败");
+//            }
+//        AlipayClient alipayClient = new DefaultAlipayClient("https://openapi.alipay.com/gateway.do", "app_id", "your private_key", "json", "utf-8", "alipay_public_key", "RSA2");
+        AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
+        request.setGrantType("authorization_code");
+        request.setCode("4b203fe6c11548bcabd8da5bb087a83b");
+        AlipaySystemOauthTokenResponse response = alipayClient.execute(request);
+        if (response.isSuccess()) {
+            System.out.println("调用成功");
+        } else {
+            System.out.println("调用失败");
+        }
 
             String accessToken = response.getAccessToken();
 
@@ -145,11 +161,25 @@ class PayApplicationTests {
             }
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
 
 
+    }
+
+    @Test
+    public void wxGetUserInfo() {
+
+        // 获取 access_token
+        String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx0d1b7b6a9f4c6dde&secret=c0023d35149285d0ff3347ff373ee8c1";
+        String str = restTemplate.getForObject(url, String.class);
+        Map map = JSONObject.parseObject(str, Map.class);
+        System.out.println(str);
+        String token = (String) map.get("access_token");
+
+        // 获取 用户 信息
+        String url2 = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token + "&openid=o6_bmjrPTlm6_2sgVt7hMZOPfL2M&lang=zh_CN";
+        System.out.println(url2);
+        String forObject = restTemplate.getForObject(url2, String.class);
+        System.out.println(forObject);
     }
 }
