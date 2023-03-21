@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -44,5 +45,21 @@ public class ListTest {
             String s = list.get(i);
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void iteratorTest() {
+        List<String> strList = new ArrayList<>();
+        strList.add("zhangsan");
+        Iterator<String> iterator = strList.iterator();
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            System.out.println(1);
+//            strList.add("xx");
+//            strList.remove(next);
+            iterator.remove();
+        }
+
+        System.out.println(strList);
     }
 }
