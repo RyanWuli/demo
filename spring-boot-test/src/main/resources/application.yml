@@ -48,3 +48,8 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+properties:
+  value:
+    test: the value is for test
+    test2: the value is for init test

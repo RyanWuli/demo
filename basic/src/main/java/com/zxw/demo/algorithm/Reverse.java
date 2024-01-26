@@ -1,12 +1,10 @@
 package com.zxw.demo.algorithm;
 
-import java.awt.geom.RectangularShape;
-
 /**
  * @Author: Ryan
  * @Date: 2021/7/13 15:35
  * @Version: 1.0
- * @Description: 整数翻转
+ * @Description: 整数反转
  */
 public class Reverse {
 
@@ -41,8 +39,8 @@ public class Reverse {
     /**
      * 数学法
      * https://leetcode-cn.com/problems/reverse-integer/solution/zheng-shu-fan-zhuan-by-leetcode-solution-bccn/
-     * @param x
-     * @return
+     * @param x 整数
+     * @return 反转后的数字
      */
     public int reverseNew(int x) {
         long n = 0;
