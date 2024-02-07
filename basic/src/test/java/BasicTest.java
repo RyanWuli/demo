@@ -1,14 +1,19 @@
+import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: Ryan
  * @Date: 2021/4/15 16:59
  * @Version: 1.0
- * @Description:
+ * @Description: java basic/tools test
  */
+@Slf4j
 public class BasicTest {
 
     /**
@@ -77,5 +82,23 @@ public class BasicTest {
     public void testString() {
         System.out.println(null == null);
         System.out.println("".equals(null));
+    }
+
+    /**
+     * String 占位符替换文本
+     *
+     * <p>String.format 可以实现文本替换
+     * <p>%s 表示替换文本的位置
+     * <p>notExistAccountNos.stream().collect(Collectors.joining(",")) 可以把集合内容用符号隔开拼成一个字符串
+     * <p>String.join(",", notExistAccountNos2) 也是把集合内容用指定的符号分隔组成一个字符串（推荐使用这个）
+     */
+    @Test
+    public void testStringFormat() {
+        List<String> notExistAccountNos = Lists.newArrayList("123", "456");
+        List<String> notExistAccountNos2 = Lists.newArrayList("789", "10");
+        String str = notExistAccountNos.stream().collect(Collectors.joining(","));
+        String res = String.format("账号%s不存在！", notExistAccountNos.stream().collect(Collectors.joining(",")));
+        String res2 = String.format("账号%s不存在！", String.join(",", notExistAccountNos2));
+        log.info("res:{}, res2:{}", res, res2);
     }
 }
