@@ -20,6 +20,11 @@ import java.util.stream.Collectors;
 public class LambdaDemo {
 
     public static void main(String[] args) {
+
+        /*
+        toMap 转 map 结合 Java8BasicTest#test2()
+         */
+
         /*
         lambda 流式处理数据 list -> map，key 不能重复，否则报错：Duplicate key Person(name=张三, age=15)
         最好是用实体的唯一键去作为 key

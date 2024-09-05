@@ -1,0 +1,66 @@
+[
+  {
+    "accessible": false,
+    "annotatedType": {
+      "annotations": [],
+      "declaredAnnotations": [],
+      "type": "java.lang.String"
+    },
+    "annotations": [],
+    "declaringClass": "com.zxw.demo.string.StrClass",
+    "enumConstant": false,
+    "genericType": "java.lang.String",
+    "modifiers": 2,
+    "name": "name",
+    "synthetic": false,
+    "type": "java.lang.String"
+  },
+  {
+    "accessible": false,
+    "annotatedType": {
+      "annotations": [],
+      "declaredAnnotations": [],
+      "type": "java.lang.String"
+    },
+    "annotations": [],
+    "declaringClass": "com.zxw.demo.string.StrClass",
+    "enumConstant": false,
+    "genericType": "java.lang.String",
+    "modifiers": 2,
+    "name": "mobile",
+    "synthetic": false,
+    "type": "java.lang.String"
+  },
+  {
+    "accessible": false,
+    "annotatedType": {
+      "annotations": [],
+      "declaredAnnotations": [],
+      "type": "java.lang.String"
+    },
+    "annotations": [],
+    "declaringClass": "com.zxw.demo.string.StrClass",
+    "enumConstant": false,
+    "genericType": "java.lang.String",
+    "modifiers": 2,
+    "name": "address",
+    "synthetic": false,
+    "type": "java.lang.String"
+  },
+  {
+    "accessible": false,
+    "annotatedType": {
+      "annotations": [],
+      "declaredAnnotations": [],
+      "type": "int"
+    },
+    "annotations": [],
+    "declaringClass": "com.zxw.demo.string.StrClass",
+    "enumConstant": false,
+    "genericType": "int",
+    "modifiers": 2,
+    "name": "age",
+    "synthetic": false,
+    "type": "int"
+  }
+]

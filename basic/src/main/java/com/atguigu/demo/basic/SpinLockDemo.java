@@ -17,7 +17,7 @@ public class SpinLockDemo {
         Thread thread = Thread.currentThread();
         System.out.println(Thread.currentThread().getName() + "\t come in ♪(＾∀＾●)ﾉ");
         while (!atomicReference.compareAndSet(null, thread)) {
-            System.out.println("该我上场表演了？？？？？");
+            System.out.println(thread.getName() + "：该我上场表演了？？？？？");
         }
     }
 
@@ -33,7 +33,7 @@ public class SpinLockDemo {
         new Thread(() -> {
             spinLockDemo.myLock();
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.MILLISECONDS.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -41,7 +41,7 @@ public class SpinLockDemo {
         }, "AA").start();
 
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class SpinLockDemo {
         new Thread(() -> {
             spinLockDemo.myLock();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

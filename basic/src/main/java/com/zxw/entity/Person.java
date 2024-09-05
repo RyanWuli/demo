@@ -18,4 +18,8 @@ public class Person {
     private String name;
 
     private Integer age;
+
+    public String getInfo() {
+        return "姓名：" + name + "，年龄：" + age;
+    }
 }
