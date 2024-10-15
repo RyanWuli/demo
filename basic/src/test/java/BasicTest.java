@@ -4,6 +4,11 @@ import com.zxw.demo.string.StrClass;
 import com.zxw.demo.string.StringUtil;
 import com.zxw.entity.Person;
 import com.zxw_work.designpattern.chainofresponsibility.interfaces.Filter;
+import com.zxw_work.entity.XxxReq;
+import com.zxw_work.entity.XxxRes;
+import com.zxw_work.thread.ServerContext;
+import com.zxw_work.thread.ServerContextHolder;
+import com.zxw_work.time.PeriodDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -217,6 +222,11 @@ public class BasicTest {
         }
     }
 
+    /**
+     * 创建临时默认文件夹
+     *
+     * @throws IOException io 异常
+     */
     @Test
     public void testFilePath() throws IOException {
 
@@ -224,5 +234,20 @@ public class BasicTest {
         Path tempDirectory = Files.createTempDirectory("test");
         log.info("tempDirectory:{}", JSON.toJSONString(tempDirectory));
 
+    }
+
+    /**
+     * period test
+     */
+    @Test
+    public void testPeriod() {
+        PeriodDemo.period();
+    }
+
+    @Test
+    public void testThreadLocal() {
+        ServerContextHolder.set(new ServerContext<>(new XxxReq(), new XxxRes()));
+//        ServerContext<XxxReq, XxxRes> serverContext = (ServerContext<XxxReq, XxxRes>) ServerContextHolder.getUnknown();
+        ServerContext<XxxReq, XxxRes> current = ServerContextHolder.get();
     }
 }
