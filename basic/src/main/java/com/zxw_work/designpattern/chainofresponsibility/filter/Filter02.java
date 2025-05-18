@@ -23,7 +23,7 @@ public class Filter02 implements Filter {
 
         Result result = invoker.invoke(invocation);
 
-        log.info("filter02 before invoke...");
+        log.info("filter02 after invoke...");
 
         return result;
     }

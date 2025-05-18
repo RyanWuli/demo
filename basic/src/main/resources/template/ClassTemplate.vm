@@ -1,0 +1,41 @@
+package ${packageName};
+
+import com.google.common.collect.Maps;
+import ${reqFullName};
+import ${resFullName};
+import ${entityFullName};
+import ${ereqFullName};
+import ${eresFullName};
+import java.util.Map;
+import com.zxw_work.entity.AbstractConverter;
+import com.zxw_work.entity.Response;
+
+/**
+ * @Author: Ryan
+ * @Date: 2024/11/8 10:20
+ * @Version: 1.0
+ * @Description: "${serviceSeqNo}" 服务 ${methodName} 功能
+ */
+public class ${fileName} extends AbstractConverter<${reqName}, ${resName}, ${entityName}, ${ereqName}, ${eresName}> {
+
+    private final static Map<String, Object> METHOD_INFO = Maps.newHashMap();
+
+    public ${fileName}() {
+        METHOD_INFO.put("${serviceName}", ${fileName}.class);
+        METHOD_INFO.put("msg", "${serviceDesc} msg");
+    }
+
+    @Override
+    protected ${ereqName} buildExternalReq(${reqName} req01) {
+        ${ereqName} ereq = new ${ereqName}();
+        // do yourself
+        return ereq;
+    }
+
+    @Override
+    protected Response<${resName}> convertExternalRes(${eresName} eres01) {
+        ${resName} res = new ${resName}();
+        // do yourself
+        return new Response<>(res);
+    }
+}

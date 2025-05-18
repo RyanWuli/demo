@@ -2,11 +2,14 @@ package com.example.springboottest;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
-import com.example.springboottest.entity.User;
-import com.example.springboottest.entity.UserVo;
-import com.example.springboottest.entity.Users;
+import com.alibaba.fastjson.JSON;
+import com.example.springboottest.entity.*;
+import com.example.springboottest.entity.pojo.Actor;
+import com.example.springboottest.enums.DefaultStatus;
 import com.example.springboottest.factory.TestFactory;
+import com.example.springboottest.mapper.ActorMapper;
 import com.example.springboottest.service.PaymentService;
+import com.example.springboottest.service.SpelTestService;
 import com.example.springboottest.test.AnnotationComponent;
 import com.example.springboottest.test.SpringTextComponent;
 import lombok.extern.slf4j.Slf4j;
@@ -182,6 +185,31 @@ class SpringBootTestApplicationTests {
 
         log.info("end...time:{}", e - s);
 
+    }
+
+    @Autowired
+    private SpelTestService spelTestService;
+
+    @Test
+    public void testSpelAop() {
+        Entity01 entity01 = new Entity01();
+        entity01.setName("Ryan");
+        entity01.setAge(15);
+        entity01.setRight(true);
+        entity01.setDefaultStatus(DefaultStatus.PROCESSING);
+        entity01.setPayment(new Payment(1, "1234567"));
+        spelTestService.spelTestMethod1(entity01);
+    }
+
+    @Autowired
+    private ActorMapper actorMapper;
+
+    @Test
+    public void testMapper() {
+        Actor actor = new Actor();
+        actor.setActorId((short) 1);
+        Actor act = actorMapper.selectById(actor);
+        log.info("act:{}", JSON.toJSONString(act));
     }
 
 }

@@ -9,5 +9,5 @@ package com.zxw.Enum;
 public enum Type {
 
     A,
-    B;
+    B
 }

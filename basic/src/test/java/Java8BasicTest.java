@@ -1,14 +1,13 @@
 import com.google.common.collect.Lists;
+import com.zxw_work.entity.Money;
+import com.zxw_work.lambda.LambdaDemo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -45,7 +44,7 @@ public class Java8BasicTest {
 
     /**
      * toMap 转 map 测试用例
-     *
+     * <p>
      * 需要注意的情况, key 和 value 都有坑
      * 结合此类 {@link com.zxw_work.lambda.LambdaDemo}, 此包为 lambda 相关 demo
      */
@@ -72,5 +71,70 @@ public class Java8BasicTest {
 
         log.info("map:{}", map);
         log.info("mapN:{}", mapN);
+    }
+
+    /**
+     * lambda reduce 一个参数 测试
+     */
+    @Test
+    public void testLambdaReduce1() {
+        Money reduce = LambdaDemo.reduce1();
+        log.info("reduce:{}", reduce);
+    }
+
+    /**
+     * lambda reduce 两个参数 测试
+     */
+    @Test
+    public void testLambdaReduce2() {
+        Money reduce = LambdaDemo.reduce2();
+        log.info("reduce:{}", reduce);
+    }
+
+    /**
+     * lambda reduce 三个参数 测试
+     */
+    @Test
+    public void testLambdaReduce3() {
+        Money reduce = LambdaDemo.reduce3();
+        log.info("reduce:{}", reduce);
+    }
+
+    // TODO: 2024/11/12 15:51 reduce() 谨慎使用并行
+    
+    /**
+     * lambda reduce 三个参数 并行测试
+     */
+    @Test
+    public void testLambdaReduce4() {
+        Money reduce = LambdaDemo.reduce4();
+        log.info("reduce:{}", reduce);
+    }
+
+    /**
+     * lambda reduce 两个参数 并行测试
+     */
+    @Test
+    public void testLambdaReduce5() {
+        Money reduce = LambdaDemo.reduce5();
+        log.info("reduce:{}", reduce);
+    }
+
+    /**
+     * lambda reduce 一个参数 并行测试
+     */
+    @Test
+    public void testLambdaReduce6() {
+        Money reduce = LambdaDemo.reduce6();
+        log.info("reduce:{}", reduce);
+    }
+
+    /**
+     * lambda flatMap 集合汇总操作
+     */
+    @Test
+    public void testLambdaFlatMap1() {
+        List<Money> flatMap1 = LambdaDemo.flatMap1();
+        log.info("flatMap1:{}", flatMap1);
     }
 }

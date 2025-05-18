@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--添加数据库的连接jar包的位置，在项目的左边最下的external libraries中找到复制全路径-->
+    <classPathEntry location="D:/software/install/maven/apache-maven-3.8.1/repository/mysql/mysql-connector-java/8.0.20/mysql-connector-java-8.0.20.jar"/>
+
+    <!--  引入外部文件  -->
+<!--    <properties resource="cfg.properties"/>-->
+
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!--  tk mybatis  -->
+<!--        <property name="javaFileEncoding" value="UTF-8"/>-->
+<!--        <property name="beginningDelimiter" value="`"/>-->
+<!--        <property name="endingDelimiter" value="`"/>-->
+
+        
+
+        <!--    自定义 lombok 生成 getter setter 方法的插件    -->
+        <plugin type="com.example.springboottest.generator.mybatis.MyGenPlugin">
+            <property name="mappers" value="com.example.springboottest.generator.base.BaseMapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+            <property name="lombok" value="Getter,Setter,ToString"/>
+        </plugin>
+
+<!--        &lt;!&ndash;    指定自定义的注释生成器    &ndash;&gt;-->
+<!--        <commentGenerator type="com.example.springboottest.generator.mybatis.MyCommentGenerator">-->
+<!--            &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+<!--&lt;!&ndash;            <property name="suppressAllComments" value="false" />&ndash;&gt;-->
+<!--            <property name="javaFileEncoding" value="UTF-8"/>-->
+<!--        </commentGenerator>-->
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://1.95.7.217:3306/sakila?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="root123456"> <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBCDECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- targetProject:生成POJO类的位置 -->
+        <javaModelGenerator targetPackage="com.example.springboottest.entity.pojo"
+                            targetProject="D:\workplace\Code\demo\spring-boot-test\src\test\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject 用的绝对路径，也可以用相对路径，相对路径注意路径是否正确否则不会生成文件但又不报错不好定位问题 -->
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.example.springboottest.mapper"
+                         targetProject="D:\workplace\Code\demo\spring-boot-test\src\test\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.springboottest.mapper"
+                             targetProject="D:\workplace\Code\demo\spring-boot-test\src\test\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 指定在数据库中已经存在的表名 -->
+        <table tableName="actor" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>
+<!--        <table tableName="address" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="category" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="city" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="country" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="customer" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="film" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="film_actor" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="film_category" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="film_text" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"></table>-->
+    </context>
+</generatorConfiguration>

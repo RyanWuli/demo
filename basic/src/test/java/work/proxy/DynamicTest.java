@@ -1,9 +1,11 @@
 package work.proxy;
 
 import com.zxw_work.proxy.cglib.ProxyCglib;
+import com.zxw_work.proxy.cglib.ProxyCglibPlus;
 import com.zxw_work.proxy.dynamic.ProxyInvocationHandler;
 import com.zxw_work.proxy.dynamic.Sale;
 import com.zxw_work.proxy.dynamic.SaleImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 /**
@@ -12,6 +14,7 @@ import org.junit.Test;
  * @Version: 1.0
  * @Description: add the description
  */
+@Slf4j
 public class DynamicTest {
 
     @Test
@@ -35,6 +38,28 @@ public class DynamicTest {
         ProxyCglib proxyCglib = new ProxyCglib();
         SaleImpl proxyCglibSale = (SaleImpl) proxyCglib.getInstance(sale);
         proxyCglibSale.sellComputer();
+        log.info("i:{}", proxyCglib.i);
+    }
+
+    @Test
+    public void testCglibPlus() {
+        SaleImpl sale = new SaleImpl();
+        ProxyCglibPlus proxyCglib = new ProxyCglibPlus();
+        SaleImpl proxyCglibSale = (SaleImpl) proxyCglib.getInstance(sale);
+        /*
+        无注解，所以不被增强
+        sell computer...
+         */
+//        proxyCglibSale.sellComputer();
+
+        /*
+        有注解，被增强
+        15:55:17.607 [main] INFO com.zxw_work.proxy.cglib.ProxyCglibPlus - 增强 pre...
+        sell phone...
+        15:55:17.610 [main] INFO com.zxw_work.proxy.cglib.ProxyCglibPlus - 增强 after...
+         */
+        proxyCglibSale.sellPhone();
+        log.info("i:{}", proxyCglib.i);
     }
 
 }

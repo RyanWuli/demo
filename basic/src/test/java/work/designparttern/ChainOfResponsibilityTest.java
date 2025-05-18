@@ -31,6 +31,7 @@ public class ChainOfResponsibilityTest {
 
     }
 
+    @Test
     public void test1() {
 
     }

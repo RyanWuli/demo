@@ -6,5 +6,14 @@ package com.zxw_work.entity;
  * @Version: 1.0
  * @Description: add the description
  */
-public class Response {
+public class Response<T extends Result> {
+
+    private T data;
+
+    public Response() {
+    }
+
+    public Response(T data) {
+        this.data = data;
+    }
 }

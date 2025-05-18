@@ -1,0 +1,11 @@
+package com.example.springboottest.generator.base;
+
+/**
+ * @Author: Ryan
+ * @Date: 2024/12/27 9:56
+ * @Version: 1.0
+ * @Description: add the description
+ */
+public interface InsertMapper<T> extends Mapper<T> {
+
+}

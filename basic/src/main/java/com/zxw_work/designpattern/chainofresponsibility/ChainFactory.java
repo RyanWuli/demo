@@ -20,7 +20,10 @@ public class ChainFactory {
 
     public static Invoker buildFilterInvoke(Invoker invoker) {
 
-        // 加载 Filter 资源（这里是个懒加载）
+        // 1.加载 Filter 资源（这里是个懒加载）
+        // 2.这里要加载到 Filter 实现类必须配置:
+        //      resources/META-INF/services/com.zxw_work.designpattern.chainofresponsibility.interfaces.Filter
+        //      否则加载不到类
         ServiceLoader<Filter> filterLoader = ServiceLoader.load(Filter.class);
 
         if (!filterLoader.iterator().hasNext()) {

@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  * @Author: Ryan
  * @Date: 2024/9/2 14:35
  * @Version: 1.0
- * @Description: add the description
+ * @Description: 过滤器注解
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

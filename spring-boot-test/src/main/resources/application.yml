@@ -1,12 +1,19 @@
 server:
   port: 8081
 
+
+# 阿里数据源应该没用了
+#    name: test
+#    url: jdbc:mysql://47.107.139.152:3306/db2020?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+#    username: root
+#    password: 123456
+
 spring:
   datasource:
     name: test
-    url: jdbc:mysql://47.107.139.152:3306/db2020?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    url: jdbc:mysql://1.95.7.217:3306/sakila?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true
     username: root
-    password: 123456
+    password: root123456
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -35,8 +42,14 @@ spring:
       useGlobalDataSourceStat: true
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    # 备库信息
+    slave-db:
+      url: jdbc:mysql://47.107.139.152:3306/db2020?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: root
+      password: 123456
 
 mybatis:
+#  type-dao-package: com.example.springboottest.mapper
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
