@@ -110,25 +110,6 @@ public class LinkedList {
 
         do {
             Object val = current.getValue();
-//            if (val == null) {
-//                if (value == null) {
-//                    if (last == null) {
-//                        first = current.getNext();
-//                    } else {
-//                        last.setNext(current.getNext());
-//                    }
-//                    removeNode = current;
-//                }
-//            } else {
-//                if (val.equals(value)) {
-//                    if (last == null) {
-//                        first = current.getNext();
-//                    } else {
-//                        last.setNext(current.getNext());
-//                    }
-//                    removeNode = current;
-//                }
-//            }
 
             if (compareValue(val, value)) {
                 if (last == null) {

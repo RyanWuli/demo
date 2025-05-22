@@ -250,4 +250,45 @@ public class BasicTest {
 //        ServerContext<XxxReq, XxxRes> serverContext = (ServerContext<XxxReq, XxxRes>) ServerContextHolder.getUnknown();
         ServerContext<XxxReq, XxxRes> current = ServerContextHolder.get();
     }
+
+    /**
+     * object equals test
+     * <p>
+     * 谁调用 equals 方法 [x.equals()]，就调用谁[x]的 equals 方法
+     * 如果没有重写则执行 object 的 equals 方法
+     * 对应面向对象的多态特性理解
+     */
+    @Test
+    public void testObjectEquals() {
+        // string 类型转成 object 调用 equals 还是以实际类型为准，也就是调用 string 类重写的 equals 方法；
+        String str1 = "equalsStr";
+        String str2 = "equalsStr";
+
+        Object obj1 = (Object) str1;
+        Object obj2 = (Object) str2;
+
+        System.out.println(obj1.equals(obj2));
+
+
+
+        // 同上以实际 string 类型的 equals 执行
+        Object obj3 = "equalsStrObj";
+        Object obj4 = "equalsStrObj";
+        System.out.println(obj3.equals(obj4));
+
+
+
+        // 同上以实际的 string 类型的重写方法比较执行
+        Object obj5 = new String("newStr");
+        Object obj6 = new String("newStr");
+        System.out.println(obj5.equals(obj6));
+
+
+
+        // 这里还是走的 string 的比较方法
+        Object obj7 = new String("newStr");
+        Object obj8 = new Person();
+        System.out.println(obj7.equals(obj8));
+
+    }
 }
