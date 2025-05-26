@@ -14,4 +14,9 @@ public class DemoTest {
         ParamPass.intParamPass();
     }
 
+    @Test
+    public void testPassString() {
+        ParamPass.passString();
+    }
+
 }

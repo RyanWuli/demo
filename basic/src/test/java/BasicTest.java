@@ -291,4 +291,24 @@ public class BasicTest {
         System.out.println(obj7.equals(obj8));
 
     }
+
+    /**
+     * 比较任意类型大小？
+     */
+    @Test
+    public void testCompare() {
+        String str1 = "A";
+        String str2 = "B";
+
+        System.out.println(str2.compareTo(str1));
+
+        String str3 = "C++";
+        String str4 = "Java";
+        System.out.println(str3.compareTo(str4));
+
+        String str5 = "5";
+        String str6 = "6";
+        System.out.println(str6.compareTo(str5));
+    }
+
 }
