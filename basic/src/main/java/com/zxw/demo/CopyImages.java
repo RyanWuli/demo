@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Create by Ryan on 2021/1/18 0:35
  * Version 1.0
- * Description explain
+ * Description 最开始的位置：C:\Users\Ray\AppData\Roaming\360safe\DesktopRest\eye\bk_image
  */
 public class CopyImages {
 
@@ -20,7 +20,7 @@ public class CopyImages {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(date);
-        File fileDir = new File("C:\\Users\\Ray\\AppData\\Roaming\\360safe\\DesktopRest\\eye\\bk_image");
+        File fileDir = new File("C:\\Users\\Ray\\AppData\\Roaming\\360browser\\bkinfo");
         String path = "E:\\壁纸\\360\\wallpaper" + format;
         File toDir = new File(path);
         if (!toDir.exists()) toDir.mkdirs();
@@ -30,8 +30,16 @@ public class CopyImages {
             File[] files = fileDir.listFiles();
             if (files == null) return;
             for (File file : files) {
+                if (file.isDirectory()) {
+                    continue;
+                }
                 String oldName = file.getName();
-                String newName = oldName.replace("dat", "jpg");
+                String newName = "";
+                if (oldName.contains("dat")) {
+                    newName = oldName.replace("dat", "jpg");
+                } else {
+                    newName = oldName + ".jpg";
+                }
                 int bytesum = 0;
                 int byteread = 0;
                 try {
