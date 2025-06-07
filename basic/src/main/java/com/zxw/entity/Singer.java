@@ -17,6 +17,9 @@ public class Singer extends Person {
 
     private String signCompany;
 
+    // 重写父类的属性
+    private Integer age = 15;
+
     /**
      * 子类如果继承父类需要默认父类值需要在构造方法中直接设置默认就行
      * FastJson 转新生成对象测试可行

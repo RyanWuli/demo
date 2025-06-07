@@ -1,5 +1,6 @@
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.zxw.demo.number.IntDemo;
 import com.zxw.demo.object.ObjectDemo;
 import com.zxw.demo.string.StrClass;
 import com.zxw.demo.string.StringUtil;
@@ -352,6 +353,12 @@ public class BasicTest {
     @Test
     public void testConvertDefault() {
         ObjectDemo.convertDefault();
+        ObjectDemo.convertDefault2();
+    }
+
+    @Test
+    public void testIntMethod1() {
+        IntDemo.intMethod1();
     }
 
 }

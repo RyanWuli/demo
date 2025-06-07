@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Author: Ryan
  * @Date: 2025/5/21 9:17
  * @Version: 1.0
- * @Description: add the description
+ * @Description: about object class
  */
 @Slf4j
 public class ObjectDemo {
@@ -22,6 +22,20 @@ public class ObjectDemo {
         String singerJson = "{\n" +
                 "  \"signCompany\": \"JVR\",\n" +
                 "  \"age\": 36\n" +
+                "}";
+
+        Singer singer = JSON.parseObject(singerJson, Singer.class);
+
+        log.info("singer:{}", singer);
+
+    }
+
+    /**
+     * 重写父类的属性并且设置默认值
+     */
+    public static void convertDefault2() {
+        String singerJson = "{\n" +
+                "  \"signCompany\": \"JVR\",\n" +
                 "}";
 
         Singer singer = JSON.parseObject(singerJson, Singer.class);
