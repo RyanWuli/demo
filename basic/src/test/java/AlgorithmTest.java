@@ -1,4 +1,6 @@
+import com.alibaba.fastjson.JSON;
 import com.zxw.demo.algorithm.Sort;
+import com.zxw.demo.algorithm.dijkstra.Dijkstra;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -50,7 +52,7 @@ public class AlgorithmTest {
      * 16:12:05.578 [main] INFO AlgorithmTest - 原数组：[47, 11, 82, 95, 51, 61, 16, 23, 75, 33]
      * 16:30:12.754 [main] INFO AlgorithmTest - 快速排序后数组：[11, 16, 23, 33, 47, 51, 61, 75, 82, 95]
      * Disconnected from the target VM, address: '127.0.0.1:63121', transport: 'socket'
-     *
+     * <p>
      * 18:03:25.081 [main] INFO AlgorithmTest - 原数组：[60, 99, 56, 18, 63, 59, 35, 36, 82, 42]
      * 18:03:25.081 [main] INFO com.zxw.demo.algorithm.Sort - 轴位置：3，left:0, right:9, 当前数组：[36, 35, 18, 42, 63, 59, 99, 60, 82, 56]
      * 18:03:25.081 [main] INFO com.zxw.demo.algorithm.Sort - 轴位置：0，left:0, right:2, 当前数组：[18, 35, 36, 42, 63, 59, 99, 60, 82, 56]
@@ -74,6 +76,25 @@ public class AlgorithmTest {
 
         log.info("快速排序后数组：{}", array);
     }
+
+    @Test
+    public void testDijkstra() {
+        Dijkstra dijkstra = new Dijkstra();
+        dijkstra.dijkstra();
+        log.info("dijkstra:{}", JSON.toJSONString(dijkstra));
+    }
+
+    /**
+     * todo 这个有问题
+     */
+    @Test
+    public void testDijkstraOptimized() {
+        Dijkstra dijkstra = new Dijkstra();
+        dijkstra.dijkstraOptimized();
+        log.info("dijkstraOptimized:{}", JSON.toJSONString(dijkstra));
+    }
+
+
 
     private int[] generateArray() {
         int[] array = new int[10];

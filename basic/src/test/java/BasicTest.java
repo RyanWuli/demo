@@ -1,5 +1,6 @@
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.zxw.demo.object.ObjectDemo;
 import com.zxw.demo.string.StrClass;
 import com.zxw.demo.string.StringUtil;
 import com.zxw.entity.Person;
@@ -11,14 +12,15 @@ import com.zxw_work.thread.ServerContextHolder;
 import com.zxw_work.time.PeriodDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
-import java.util.List;
-import java.util.ServiceLoader;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -27,7 +29,7 @@ import java.util.stream.Collectors;
  * @Version: 1.0
  * @Description: java basic/tools test
  */
-@Slf4j
+@Slf4j(topic = "BasicTest")
 public class BasicTest {
 
     /**
@@ -309,6 +311,47 @@ public class BasicTest {
         String str5 = "5";
         String str6 = "6";
         System.out.println(str6.compareTo(str5));
+    }
+
+    @Test
+    public void testScanner() {
+        Scanner in = new Scanner(System.in);
+
+        int i = in.nextInt();
+
+        log.info("i:{}", i);
+    }
+
+    public static final Marker keyWord = MarkerFactory.getMarker("告警");
+
+    @Test
+    public void testSl4jLog() {
+        String mes = "失败";
+        log.info(keyWord, "xxx 业务异常：{}", mes);
+    }
+
+    @Test
+    public void testIterator() {
+        /*
+        Iterator 遍历原理其实就是一个游标 cursor ，获取一下一个 next 之后，游标往下移一个
+         */
+
+        ArrayList<Integer> integerList = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7);
+        Iterator<Integer> iterator = integerList.iterator();
+
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+
+    }
+
+    @Test
+    public void testConvertDefault() {
+        ObjectDemo.convertDefault();
     }
 
 }
