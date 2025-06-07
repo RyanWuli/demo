@@ -17,6 +17,10 @@ public class Singer extends Person {
 
     private String signCompany;
 
+    /**
+     * 子类如果继承父类需要默认父类值需要在构造方法中直接设置默认就行
+     * FastJson 转新生成对象测试可行
+     */
     public Singer() {
         setName("周杰伦");
     }

@@ -13,6 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ObjectDemo {
 
+    /**
+     *      * 子类如果继承父类需要默认父类值需要在构造方法中直接设置默认就行
+     *      * FastJson 转新生成对象测试可行
+     *      * 子类默认父类属性值（适用场景在父类多子类不影响其它的情况），重写父类属性也行
+     */
     public static void convertDefault() {
         String singerJson = "{\n" +
                 "  \"signCompany\": \"JVR\",\n" +
