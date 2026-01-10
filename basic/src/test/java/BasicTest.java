@@ -1,8 +1,13 @@
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.zxw.demo.Class.InnerClassDemo;
+import com.zxw.demo.Class.ReflexDemo;
+import com.zxw.demo.extend.Child;
 import com.zxw.demo.number.IntDemo;
 import com.zxw.demo.object.ObjectDemo;
 import com.zxw.demo.string.StrClass;
+import com.zxw.demo.string.StringBuilderDemo;
+import com.zxw.demo.string.StringTest;
 import com.zxw.demo.string.StringUtil;
 import com.zxw.entity.Person;
 import com.zxw_work.designpattern.chainofresponsibility.interfaces.Filter;
@@ -359,6 +364,70 @@ public class BasicTest {
     @Test
     public void testIntMethod1() {
         IntDemo.intMethod1();
+    }
+
+    @Test
+    public void testExtendAccess() {
+        Child child = new Child();
+        log.info("address:{}", child.getAddress());
+        log.info(JSON.toJSONString(child));
+    }
+
+    @Test
+    public void testStringReverse() {
+        // StringBuilder(StringBuffer) 的 api 形式
+        String str = "12345678910";
+        log.info("str:{}", str);
+        log.info("reverse:{}", StringBuilderDemo.reverse(str));
+
+        // 自己解析字符数组方式
+        log.info("string reverse:{}", StringTest.reverse(str));
+    }
+
+    @Test
+    public void testStringCompare() {
+        StringTest.stringCompare();
+    }
+
+    /**
+     * 11:12:20.115 [main] INFO BasicTest - ori address:2eafffde, value:x_zxw
+     * 11:12:20.120 [main] INFO BasicTest - ori address:2eafffde, value:M_zxw
+     */
+    @Test
+    public void testStringModify() {
+        String str = new String("x_zxw");
+        log.info("ori address:{}, value:{}", Integer.toHexString(System.identityHashCode(str)), str);
+
+        StringTest.updateString(str);
+        log.info("ori address:{}, value:{}", Integer.toHexString(System.identityHashCode(str)), str);
+
+        String s = "x_zxw";
+        log.info("ori address:{}, value:{}", Integer.toHexString(System.identityHashCode(s)), s);
+
+        StringTest.updateString(str);
+        log.info("ori address:{}, value:{}", Integer.toHexString(System.identityHashCode(s)), s);
+    }
+
+    @Test
+    public void testClassReflex() {
+        ReflexDemo.classReflex();
+    }
+
+    @Test
+    public void testHashCode() {
+        ObjectDemo.hashCodeMethod();
+    }
+
+    @Test
+    public void testInnerClass() {
+        InnerClassDemo.StaticInner staticInner = new InnerClassDemo.StaticInner();
+        staticInner.visit();
+
+        InnerClassDemo innerClassDemo = new InnerClassDemo();
+        InnerClassDemo.Inner inner = innerClassDemo.new Inner();
+        inner.visit();
+
+        innerClassDemo.visit();
     }
 
 }

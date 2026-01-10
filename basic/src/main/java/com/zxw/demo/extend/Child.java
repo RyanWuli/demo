@@ -7,4 +7,9 @@ package com.zxw.demo.extend;
  * @Description:
  */
 public class Child extends Father {
+
+    public String getAddress() {
+        return super.getAddress();
+    }
+
 }

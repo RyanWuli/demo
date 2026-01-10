@@ -13,9 +13,10 @@ public class IntegerTest {
 
     /**
      * 两个 Integer 比较
+     * Integer 和 int 比较
      */
     @Test
-    public void tese01() {
+    public void test01() {
         IntegerDemo.method01();
     }
 

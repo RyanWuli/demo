@@ -19,6 +19,7 @@ public class IntegerDemo {
      * 用 equals 方法才是推荐的比较方式
      */
     public static void method01() {
+        // 自动包装
         Integer i1 = 98;
         Integer i2 = 98;
 
@@ -44,6 +45,17 @@ public class IntegerDemo {
 
         log.info("i9 equals i10:{}", i9.equals(i10));
 
+        Integer i11 = new Integer(100000);
+        int i12 = 100000;
+
+        log.info("i11 equals i12:{}", i11.equals(i12));
+        log.info("i11 == i12:{}", i11 == i12);
+
+        Integer i13 = null;
+        int i14 = 0;
+
+        // null 和 基本类型进行比较直接空指针异常
+//        log.info("i13 == i14:{}", i13 == i14);
     }
 
     public static void intMethod() {

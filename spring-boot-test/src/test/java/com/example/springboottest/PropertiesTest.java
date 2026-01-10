@@ -1,5 +1,6 @@
 package com.example.springboottest;
 
+import com.example.springboottest.config.ConfigOne;
 import com.example.springboottest.config.PropertiesConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
 
 /**
  * @Author: Ryan
@@ -24,6 +22,9 @@ public class PropertiesTest {
     @Autowired
     private PropertiesConfig propertiesConfig;
 
+    @Autowired
+    private ConfigOne configOne;
+
     @Test
     public void propertiesTest() {
         System.out.println("properties test value:" + propertiesConfig.getTestValue());
@@ -36,6 +37,11 @@ public class PropertiesTest {
     @Test
     public void testAutowired() {
         System.out.println(taskScheduler);
+    }
+
+    @Test
+    public void testProperties() {
+        System.out.println(configOne.getTest());
     }
 
 }
